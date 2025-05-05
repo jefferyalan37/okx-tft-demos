@@ -7,13 +7,15 @@ import torch
 # Load your models
 @st.cache_resource
 def load_models():
+    # Load ensemble model
     with open("models/ensemble_model.pkl", "rb") as f:
         ensemble_model = pickle.load(f)
-    tft_model = torch.load("models/tft_model.pt", map_location=torch.device('cpu'))
+
+    # Load TFT model
+    tft_model = SimpleTFT(input_dim=10, hidden_dim=64)
+    tft_model.load_state_dict(torch.load("models/tft_model.pt", map_location=torch.device('cpu')))
+
     return ensemble_model, tft_model
-
-ensemble_model, tft_model = load_models()
-
 # App Title
 st.title("🚀 OKX Institutional Demo: Temporal Fusion Transformer (TFT)")
 
