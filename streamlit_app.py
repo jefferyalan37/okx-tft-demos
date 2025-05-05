@@ -23,7 +23,7 @@ features = [
 choice = st.sidebar.radio("Select Feature", features)
 
 # Load the Hourly Dataset
-@st.cache
+@st.cache_data
 def load_hourly_data():
     hourly_data_path = "./data/final_bitcoin_hourly_processed.csv"
     return pd.read_csv(hourly_data_path)
@@ -72,21 +72,32 @@ elif choice == "📈 Hourly Predictions":
             st.write("Preprocessed Data:")
             st.dataframe(processed_data.head())
 
-            # Run model evaluation
+            # Run model predictions
             st.markdown("### Generating Predictions...")
-            # Assuming evaluate_model can be used for predictions
-            predictions = np.random.rand(len(processed_data))  # Mock predictions for now
-            processed_data["Predictions"] = predictions
+            # Replace mock predictions with actual model predictions
+            predictions = evaluate_model(
+                model_path="./models/tft_model.pkl",  # Path to the pretrained model
+                scaler_path="./models/scaler.pkl",    # Path to the scaler
+                features_path="./models/required_features.pkl",  # Path to required features
+                data_path="./data/final_bitcoin_hourly_processed.csv"  # Path to the hourly dataset
+            )
 
-            st.write("Hourly Predictions:")
-            st.dataframe(processed_data[["close", "Predictions"]])
+            # Check if predictions were generated successfully
+            if predictions is None or len(predictions) == 0:
+                st.error("No predictions were generated. Please check the model and data.")
+            else:
+                processed_data["Predictions"] = predictions
 
-            # Visualization
-            st.markdown("### Actual vs Predicted Close Prices")
-            st.line_chart({
-                "Actual": processed_data["close"],
-                "Predicted": processed_data["Predictions"]
-            })
+                # Display predictions
+                st.write("Hourly Predictions:")
+                st.dataframe(processed_data[["close", "Predictions"]])
+
+                # Visualization
+                st.markdown("### Actual vs Predicted Close Prices")
+                st.line_chart({
+                    "Actual": processed_data["close"],
+                    "Predicted": processed_data["Predictions"]
+                })
     except Exception as e:
         st.error(f"Error during prediction: {e}")
 
