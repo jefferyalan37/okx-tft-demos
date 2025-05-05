@@ -1,1 +1,10 @@
-
+streamlit
+pandas
+plotly
+sqlalchemy
+fpdf
+boto3
+pytesseract
+pdf2image
+psycopg2-binary
+torch
