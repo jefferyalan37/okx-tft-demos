@@ -25,7 +25,7 @@ model.eval()
 #       Indicator Functions
 ############################################
 def compute_sma(df, window):
-    return df['close'].rolling(window=window).mean()See: https://docs.brew.sh/Homebrew-and-Python
+    return df['close'].rolling(window=window).mean()
 
 
 def compute_ema(df, window):
