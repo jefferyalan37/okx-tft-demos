@@ -15,4 +15,10 @@ This repository contains a full AI/ML pipeline leveraging a **Temporal Fusion Tr
 ---
 
 ## 📁 Project Structure
-
+okx-tft-demos/
+├── data/ # Raw and preprocessed .csv and .npz files
+├── models/ # Saved scalers, models, and TFT state_dict
+├── regenerate_models.py # Entry point to rebuild and retrain the full ensemble
+├── transformer_model.py # XGBoost + stacking model
+├── temporal_fusion_transformer_model.py # Full TFT with attention & variable selection
+└── README.md # You're here.
