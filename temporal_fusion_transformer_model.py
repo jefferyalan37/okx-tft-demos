@@ -10,6 +10,17 @@ from xgboost import XGBRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.ensemble import StackingRegressor
 from sklearn.linear_model import LinearRegression
+from temporal_fusion_transformer_model import TemporalFusionTransformerComplete
+
+# Define the model (adjust input_dim and other parameters as needed)
+model = TemporalFusionTransformerComplete(input_dim=10, hidden_dim=64, num_heads=4, dropout=0.1)
+
+# Save the model's state
+torch.save(model.state_dict(), TFT_PATH)
+
+# Reload the model's state (if needed later)
+model.load_state_dict(torch.load(TFT_PATH))
+model.eval()
 
 # Define paths
 BASE_MODEL_DIR = os.getenv("MODEL_DIR", "./models/")
