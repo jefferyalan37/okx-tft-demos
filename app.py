@@ -3,6 +3,15 @@ import pandas as pd
 import numpy as np
 import picklei
 import torch
+import joblib  # For loading .pkl models
+
+# Ensure the path is relative to your script's location
+model_path = "models/ensemble_model.pkl"
+ensemble_model = joblib.load(model_path)
+
+# Test if the model is loaded correctly
+print("Model loaded successfully!")
+
 
 # Load your PyTorch model
 ensemble_model = torch.load("models/ensemble_model.pt")
