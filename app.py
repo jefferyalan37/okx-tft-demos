@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
+import picklei
 import torch
+
+# Load your PyTorch model
+ensemble_model = torch.load("models/ensemble_model.pt")
 
 # Load your models
 @st.cache_resource
