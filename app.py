@@ -3,8 +3,64 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+# Inject Custom CSS
+st.markdown("""
+    <style>
+    /* General Layout */
+    body {
+        background-color: #f7f9fc;
+        color: #333333;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* App Title */
+    .stTitle {
+        color: #0071e3;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Tabs Styling */
+    .stTabs {
+        margin-top: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .stTabs > div {
+        border-bottom: 2px solid #0071e3;
+    }
+
+    /* Inputs and Buttons */
+    .stTextInput, .stNumberInput, .stSelectbox {
+        margin: 10px 0;
+    }
+
+    .stButton button {
+        background-color: #0071e3;
+        color: #ffffff;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .stButton button:hover {
+        background-color: #005bb5;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666666;
+        padding: 20px 0;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # App Title
-st.title("OKX Institutional Demo: Centauri Market & Trading Intellgence Suite")
+st.title("🚀 OKX Institutional Demo: Centauri Market & Trading Intelligence Suite")
 
 st.markdown("""
 ## Advanced Trading and Forecasting Tool
@@ -16,38 +72,6 @@ This app demonstrates the capabilities of the **Temporal Fusion Transformer (TFT
 Designed for **crypto exchanges**, **hedge funds**, and **banking clients**.
 """)
 
-# Function placeholders (models are turned off)
-def load_models():
-    # This function is now a placeholder and doesn't load models.
-    return None, None
-
-# Mock model variables
-ensemble_model, tft_model = None, None
-
-# File Upload
-uploaded_file = st.file_uploader("Upload your crypto data (CSV format)", type=["csv"])
-
-if uploaded_file:
-    try:
-        # Load and display the uploaded data
-        data = pd.read_csv(uploaded_file)
-        st.write("Uploaded Data:")
-        st.dataframe(data.head())
-
-        # Feature Engineering Placeholder
-        st.subheader("Forecasting Insights")
-        st.write("Running the models is disabled for this demo.")
-
-        # Placeholder for predictions
-        st.write("Predictions (Ensemble Model):")
-        st.line_chart(np.random.rand(10))  # Random data as a placeholder
-
-        st.subheader("TFT Model Analysis")
-        st.write("Predictions (TFT Model):")
-        st.line_chart(np.random.rand(10))  # Random data as a placeholder
-
-    except Exception as e:
-        st.error(f"An error occurred while processing the file: {e}")
 # Tabs for Features
 tabs = st.tabs([
     "Liquidity Optimizer",
@@ -78,7 +102,10 @@ with tabs[1]:
     st.bar_chart({"High Risk": [5, 3, 4], "Medium Risk": [3, 6, 2], "Low Risk": [10, 15, 20]})
 
 # Add similar logic for other tabs...
-st.write("This feature is under development.")
 
 # Footer
-st.markdown("**Built for OKX Demos and Institutional Advanced Trading Use Cases**")
+st.markdown("""
+<footer>
+    Built for OKX Demos and Institutional Advanced Trading Use Cases
+</footer>
+""", unsafe_allow_html=True)
