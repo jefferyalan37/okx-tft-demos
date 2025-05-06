@@ -1,12 +1,6 @@
 import torch
 from app import SimpleTFT
-import os
-import os
-print(os.path.exists("models/tft_model.pt"))  # Should print True if the file was saved
-os.makedirs("models", exist_ok=True)
-model = SimpleTFT(input_dim=10, hidden_dim=64)  # Ensure this matches the training setup
-torch.save(model.state_dict(), "models/tft_model.pt")
+
+# Define the model and save its state dictionary
 model = SimpleTFT(input_dim=10, hidden_dim=64)
-model.load_state_dict(torch.load("models/tft_model.pt", map_location=torch.device('cpu')))
-model.eval()  # Switch the model to evaluation mode
-print(os.path.getsize("models/tft_model.pt"))  # Should print a non-zero file size
+torch.save(model.state_dict(), "tft_model.pt")
