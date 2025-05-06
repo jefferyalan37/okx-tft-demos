@@ -1,9 +1,8 @@
-import streamlit as st
-import pandas as pd
+import os
 import numpy as np
-import pickle
-import torch
-import joblib  # For loading .pkl models
+import pandas as pd
+import joblib
+import torch# For loading .pkl models
 
 # Define your TFT model class (replace SimpleTFT with the actual class definition)
 class SimpleTFT(torch.nn.Module):
@@ -18,7 +17,6 @@ class SimpleTFT(torch.nn.Module):
 
 # Load your models
 @st.cache_resource
-import joblib
 def load_models():
     try:
         ensemble_model = joblib.load("models/ensemble_model.pkl")
