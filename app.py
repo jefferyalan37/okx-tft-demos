@@ -3,6 +3,16 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+# Inject Custom Font CSS
+st.markdown("""
+    <style>
+    /* Apply Roboto font to the entire app */
+    html, body, [class*="css"] {
+        font-family: 'Roboto', sans-serif;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # App Title
 st.title("OKX Institutional Demo: Centauri Market & Trading Intelligence Suite")
 
