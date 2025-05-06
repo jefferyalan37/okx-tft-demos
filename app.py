@@ -16,7 +16,7 @@ class SimpleTFT(torch.nn.Module):
         return self.output_layer(x)
 
 # Load your models
-@st.cache_resource
+@st.cache
 def load_models():
     try:
         ensemble_model = joblib.load("models/ensemble_model.pkl")
@@ -25,8 +25,6 @@ def load_models():
     except Exception as e:
         print(f"[ERROR] Failed to load models: {e}")
         return None, None
-    return ensemble_model, tft_model
-
 # App Title
 st.title("🚀 OKX Institutional Demo: Temporal Fusion Transformer (TFT)")
 
