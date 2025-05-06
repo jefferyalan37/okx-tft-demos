@@ -18,15 +18,15 @@ class SimpleTFT(torch.nn.Module):
 
 # Load your models
 @st.cache_resource
+import joblib
 def load_models():
-    # Load ensemble model (Scikit-learn or XGBoost model)
-    ensemble_model = joblib.load("models/ensemble_model.pkl")
-
-    # Load TFT model
-    tft_model = SimpleTFT(input_dim=10, hidden_dim=64)
-    tft_model.load_state_dict(torch.load("models/tft_model.pt", map_location=torch.device('cpu')))
-    tft_model.eval()  # Set the model to evaluation mode
-
+    try:
+        ensemble_model = joblib.load("models/ensemble_model.pkl")
+        tft_model = joblib.load("models/tft_model.pkl")
+        return ensemble_model, tft_model
+    except Exception as e:
+        print(f"[ERROR] Failed to load models: {e}")
+        return None, None
     return ensemble_model, tft_model
 
 # App Title
@@ -44,7 +44,9 @@ Designed for **crypto exchanges**, **hedge funds**, and **banking clients**.
 
 # Load models
 ensemble_model, tft_model = load_models()
-
+ensemble_model, tft_model = load_models()
+if ensemble_model is None or tft_model is None:
+    st.error("Failed to load models. Please check the logs for details.")
 # File Upload
 uploaded_file = st.file_uploader("Upload your crypto data (CSV format)", type=["csv"])
 if uploaded_file:
