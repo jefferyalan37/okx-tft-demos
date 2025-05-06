@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # App Title
-st.title("🚀 OKX Institutional Demo: Temporal Fusion Transformer (TFT)")
+st.title("OKX Institutional Demo: Temporal Fusion Transformer (TFT)")
 
 st.markdown("""
 ## Advanced Trading and Forecasting Tool
