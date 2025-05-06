@@ -1,8 +1,10 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 # App Title and Overview
-st.title(" OKX Institutional Demo")
-st.subheader("Centauri Market Intelligence & Trading  Suites")
+st.title(OKX Institutional Demo: Temporal Fusion Transformer (TFT)")
+st.subheader("Centauri Market Intelligence & Trading Suites")
 st.markdown("""
 This app showcases a suite of advanced AI-driven tools for institutional use cases:
 - **Liquidity optimization**
@@ -27,7 +29,7 @@ tabs = st.tabs([
     "Execution Simulator"
 ])
 
-# Enhanced Skeleton for Tab 1: Liquidity Optimizer
+# Skeleton for Tab 1: Liquidity Optimizer
 with tabs[0]:
     st.header("Liquidity Optimizer")
     st.markdown("""
@@ -48,7 +50,7 @@ with tabs[0]:
     st.subheader("Tables")
     st.dataframe({"Asset": ["BTC", "ETH", "USDT"], "Allocation": [50, 30, 20]})  # Example table
 
-# Enhanced Skeleton for Tab 2: Risk Surveillance AI
+# Skeleton for Tab 2: Risk Surveillance AI
 with tabs[1]:
     st.header("Risk Surveillance AI")
     st.markdown("""
@@ -67,7 +69,7 @@ with tabs[1]:
     st.subheader("Tables")
     st.dataframe({"Transaction ID": [101, 102, 103], "Risk Level": ["High", "Medium", "Low"]})
 
-# Enhanced Skeleton for Tab 3: Compliance and AML
+# Skeleton for Tab 3: Compliance and AML
 with tabs[2]:
     st.header("Compliance and AML")
     st.markdown("""
@@ -87,7 +89,7 @@ with tabs[2]:
     st.subheader("Tables")
     st.dataframe({"Rule ID": [1, 2, 3], "Violation Count": [0, 2, 1]})
 
-# Enhanced Skeleton for Tab 4: Trade Signals
+# Skeleton for Tab 4: Trade Signals
 with tabs[3]:
     st.header("Trade Signals")
     st.markdown("""
@@ -108,7 +110,7 @@ with tabs[3]:
     st.subheader("Tables")
     st.dataframe({"Signal Type": ["Buy", "Sell"], "Strength": [85, 75]})
 
-# Enhanced Skeleton for Tab 5: Conventional Analytics
+# Skeleton for Tab 5: Conventional Analytics
 with tabs[4]:
     st.header("Conventional Analytics")
     st.markdown("""
@@ -127,7 +129,7 @@ with tabs[4]:
     st.subheader("Tables")
     st.dataframe({"Insight": ["Trend A", "Trend B"], "Value": [0.75, 0.25]})
 
-# Enhanced Skeleton for Tab 6: Portfolio Optimizer
+# Skeleton for Tab 6: Portfolio Optimizer
 with tabs[5]:
     st.header("Portfolio Optimizer")
     st.markdown("""
@@ -146,7 +148,7 @@ with tabs[5]:
     st.subheader("Tables")
     st.dataframe({"Asset": ["AAPL", "GOOG", "TSLA"], "Allocation": [40, 30, 30]})
 
-# Enhanced Skeleton for Tab 7: Execution Simulator
+# Skeleton for Tab 7: Execution Simulator
 with tabs[6]:
     st.header("Execution Simulator")
     st.markdown("""
