@@ -1,15 +1,5 @@
 import torch
+from app import SimpleTFT
 
-# Load the model
-model_path = "path_to_your_downloaded_file/tft_model.pt"
-model = torch.load(model_path)
-
-# If it's a state dictionary, you may need to initialize the model and load the state
-# model = YourModelClass()
-# model.load_state_dict(torch.load(model_path))
-print(model.keys())  # If it's a state_dict, this will show the layers and parameters
-# Example input tensor
-input_tensor = torch.randn(1, 10)  # Modify dimensions as per your model's requirements
-output = model(input_tensor)
-print(output)
-
+model = SimpleTFT(input_dim=10, hidden_dim=64)  # Ensure this matches the training setup
+torch.save(model.state_dict(), "models/tft_model.pt")
